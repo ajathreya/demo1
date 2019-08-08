@@ -1,0 +1,71 @@
+logging:
+    file: ../logs/LicenseManagementApp.log
+
+contentType:
+  application/json
+characterEncoding:
+  UTF-8
+accessControlAllowMethods:
+  POST, GET, OPTIONS, PUT, HEAD
+accessControlExposeHeaders:
+  X-Custom-Header,Content-Type, Accept, X-Requested-With, Authorization
+accessControlAllowHeaders:
+  Access-Control-Allow-Origin, Authorization, Origin, X-Requested-With, Content-Type, Accept
+accessControlMaxAge:
+  60000
+accessControlAllowCredentials:
+  true                  
+
+commonUser:
+  common_user
+resourceManager:
+  resource_manager
+
+domainDcs:
+  DC=INNOWAKE,DC=HQ
+securityLevel:
+  simple
+ldapConnectionUrl:
+  ldap://zeus.innowake.hq:389
+initialContextFactory:
+  com.sun.jndi.ldap.LdapCtxFactory
+domain:
+  INNOWAKEHQ\
+memberOfAttr:
+  memberOf
+mailAttr:
+  mail
+displayName:
+  displayName
+firstName:
+  givenName
+lastName:
+  sn
+isLdapActive:
+  true
+ldap_grp_role_mapping:
+  innoWake lic sec:RESOURCE_MANAGER;innoWake qm:RESOURCE_MANAGER;innoWake cf:COMMON_USER;innowake all:COMMON_USER;
+ 
+roles:
+  innoWake lic sec,deloitte app mod iw license full,deloitte app mod iw license limited,innoWake qm,innoWake cf,innowake all
+
+groups_modifier_list:
+  "innoWake lic sec-developer:com.lmps.modifiers.EnableAllModifier,internal:com.lmps.modifiers.InternalUserModifier,thirdPartyOnline:com.lmps.modifiers.ThirdPartyOnlineModifier,thirdPartyOffline:com.lmps.modifiers.ThirdPartyOfflineModifier,customer:com.lmps.modifiers.CustomerLicenseModifier;\
+deloitte app mod iw license full-internal:com.lmps.modifiers.InternalUserModifier,thirdPartyOnline:com.lmps.modifiers.ThirdPartyOnlineFullModifier,thirdPartyOffline:com.lmps.modifiers.ThirdPartyOfflineFullModifier;\
+deloitte app mod iw license limited-internal:com.lmps.modifiers.InternalUserModifier,thirdPartyOnline:com.lmps.modifiers.ThirdPartyOnlineLimModifier,thirdPartyOffline:com.lmps.modifiers.ThirdPartyOfflineLimModifier;\
+innoWake qm-internal:com.lmps.modifiers.InternalUserModifier,thirdPartyOnline:com.lmps.modifiers.ThirdPartyOnlineModifier,thirdPartyOffline:com.lmps.modifiers.ThirdPartyOfflineModifier;\
+innoWake cf-internal:com.lmps.modifiers.InternalUserModifier,thirdPartyOnline:com.lmps.modifiers.ThirdPartyOnlineModifier,thirdPartyOffline:com.lmps.modifiers.ThirdPartyOfflineModifier;\
+innowake all-internal:com.lmps.modifiers.InternalUserAllModifier,thirdPartyOnline:com.lmps.modifiers.ThirdPartyOnlineAllModifier,thirdPartyOffline:com.lmps.modifiers.ThirdPartyOfflineAllModifier"
+
+driverClassName:
+  com.mysql.jdbc.Driver
+url:
+  jdbc:xxxx
+dbUserName:
+  xxxx
+dbPassword:
+  xxxx
+persistenceUnitName:
+  licensing
+packagesToScan:
+  innowake.base.license.management.model
